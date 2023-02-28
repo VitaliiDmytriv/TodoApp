@@ -1,0 +1,15 @@
+.grid {
+    &__container {
+        display: grid;
+        grid-template-columns: auto fit-content;
+        grid-template-rows: 100px 100px;
+    }
+
+    &__item1 {
+        background-color: lightsalmon;
+    }
+
+    &__item2 {
+        background-color: lightgreen;
+    }
+}
