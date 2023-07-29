@@ -1,4 +1,4 @@
-import Layout from "./pages/layout";
+import Layout from "./pages/layout/layout";
 import "./style/main.scss";
 
 function App() {

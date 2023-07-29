@@ -25,30 +25,3 @@ $baseOrange: #f7e18e;
 $baseOrangeDarker: #92400e;
 $baseStar: #f43f5e;
 $baseHover: #94a3b8;
-
-// breakPoints ==================
-$breakPonint640px: 40rem;
-$breakPonint768px: 48rem;
-$breakPonint1280px: 80rem;
-
-// fontSize =====================
-:root {
-    --FZ-baseFont: 0.75rem;
-    --FZ-headerFont: 1.125rem;
-}
-
-@media (min-width: $breakPonint640px) {
-    :root {
-        --FZ-baseFont: 0.875rem;
-    }
-}
-@media (min-width: $breakPonint768px) {
-    :root {
-        --FZ-headerFont: 1.5rem;
-    }
-}
-@media (min-width: $breakPonint1280px) {
-    :root {
-        --FZ-baseFont: 1rem;
-    }
-}

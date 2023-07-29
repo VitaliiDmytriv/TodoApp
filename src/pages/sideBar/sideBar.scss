@@ -1,0 +1,78 @@
+@import "../../style/variables/breakPoints.scss";
+@import "../../style/variables/colors.scss";
+
+.sideBar {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    &.left {
+        left: 0;
+    }
+    &.right {
+        right: 0;
+    }
+
+    &.left.active,
+    &.right.active {
+        left: 0;
+        right: 0;
+    }
+
+    @media (min-width: $breakPonint1280px) {
+        &.left,
+        &.right {
+            position: static;
+        }
+    }
+
+    &__wrapper {
+        height: 100%;
+        &.active {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.12);
+            @media (min-width: $breakPonint1280px) {
+                position: static;
+            }
+        }
+    }
+
+    &__content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background-color: $light-base;
+        @media (min-width: $breakPonint1280px) {
+            position: static;
+            height: 100%;
+            width: 100%;
+            min-width: 15rem;
+        }
+    }
+
+    &.right &__content {
+        right: 0;
+    }
+
+    &.left &__content {
+        left: 0;
+    }
+
+    &.right.active &__content,
+    &.left.active &__content {
+        width: 15rem;
+    }
+
+    @media (min-width: $breakPonint1280px) {
+        &.right.active &__content,
+        &.left.active &__content {
+            width: 100%;
+            min-width: 15rem;
+        }
+    }
+}
