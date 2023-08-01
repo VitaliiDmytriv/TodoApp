@@ -1,3 +1,6 @@
+export const LEFT = "left";
+export const RIGHT = "right";
+
 export function getDateNow() {
     const year = Intl.DateTimeFormat("en-US", {
         year: "numeric",

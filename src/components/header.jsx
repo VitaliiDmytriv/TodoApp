@@ -5,7 +5,8 @@ import MenuHamburger from "./ui/menuHamburger";
 import Tooltip from "./ui/tooltip";
 import Searchbar from "./ui/searchBar";
 
-function Header() {
+// eslint-disable-next-line react/prop-types
+function Header({ query }) {
     return (
         <header className="header">
             <div className="header__grid">
@@ -16,12 +17,14 @@ function Header() {
                 </div>
                 <DateNow />
                 <div className="header__action">
-                    <Notification />
+                    <Tooltip datahover="see notifications">
+                        <Notification />
+                    </Tooltip>
                     <MyButton>Add new task</MyButton>
                     <p>icon</p>
                 </div>
                 <div className="header__search">
-                    <Searchbar />
+                    <Searchbar defaultValue={query} />
                 </div>
             </div>
         </header>
