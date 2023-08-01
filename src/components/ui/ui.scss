@@ -1,0 +1,99 @@
+@import "../../style/variables/colors.scss";
+@import "../../style/variables/fontSize.scss";
+@import "../../style/variables/breakPoints.scss";
+
+.myButton {
+    padding: 0.75rem 1.5rem;
+    background-color: $light-basePurple;
+    border: 0;
+    border-radius: 5px;
+    color: $light-base;
+    font-size: var(--FZ-baseFont);
+    cursor: pointer;
+}
+
+// ========
+
+.date {
+    font-size: var(--FZ-baseFont);
+    color: $light-baseFont;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+        font-size: inherit;
+        text-transform: uppercase;
+        @media (min-width: $breakPonint1280px) {
+            display: none;
+        }
+    }
+
+    &__numbers {
+        font-size: inherit;
+        font-weight: 400;
+    }
+}
+
+//=======
+
+.notification {
+    color: $light-basePurple;
+    font-size: 1.3rem;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &::after {
+        position: absolute;
+    }
+}
+
+// ========
+
+.menuHamburger {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 2px;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: $light-basePurple;
+        color: $light-base;
+    }
+}
+
+// ========
+
+.tooltip {
+    position: relative;
+    &::after {
+        content: attr(dataHover);
+        opacity: 0;
+        position: absolute;
+        width: max-content;
+        height: auto;
+        color: $light-base;
+        background-color: $light-baseSecondFont;
+        padding: 2px 3px;
+        border-radius: 2px;
+        font-size: 0.8rem;
+        bottom: -130%;
+        left: -20%;
+        transition-delay: 0s;
+    }
+
+    &:hover::after {
+        opacity: 1;
+        transition-delay: 1s;
+    }
+}
+
+// ========
+
+.searchbar {
+}
