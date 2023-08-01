@@ -1,10 +1,14 @@
 import { useState } from "react";
-import "./layout.scss";
-import SideBar from "../sideBar/sideBar";
+import SideBar from "../components/sideBar";
+import Header from "../components/header";
+import "../components/components.scss";
+import "../components/ui/ui.scss";
+import { Outlet } from "react-router-dom";
+
 const LEFT = "left";
 const RIGHT = "right";
 
-function Layout() {
+function Root() {
     const [sideBars, setSideBars] = useState({
         [LEFT]: false,
         [RIGHT]: false,
@@ -22,14 +26,10 @@ function Layout() {
                     handleClick={handleSidebarClick}
                     side={LEFT}
                 ></SideBar>
-                <div className="content">
-                    <button onClick={() => handleSidebarClick(LEFT, true)}>
-                        left
-                    </button>
-                    <button onClick={() => handleSidebarClick(RIGHT, true)}>
-                        right
-                    </button>
-                </div>
+                <section className="content">
+                    <Header />
+                    <Outlet />
+                </section>
                 <SideBar
                     sideBars={sideBars}
                     handleClick={handleSidebarClick}
@@ -40,4 +40,4 @@ function Layout() {
     );
 }
 
-export default Layout;
+export default Root;

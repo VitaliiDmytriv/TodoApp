@@ -1,5 +1,3 @@
-import "./sideBar.scss";
-
 /* eslint-disable react/prop-types */
 function SideBar({ children, side, handleClick, sideBars }) {
     const sideBarClassName = `sideBar ${side} ${
