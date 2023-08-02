@@ -1,4 +1,6 @@
 import { Form, useNavigation, useSubmit } from "react-router-dom";
+import { TfiReload } from "react-icons/tfi";
+import { IoSearchOutline } from "react-icons/io5";
 
 function Searchbar({ ...props }) {
     const submit = useSubmit();
@@ -20,7 +22,19 @@ function Searchbar({ ...props }) {
                 aria-label="search tasks"
                 onChange={(e) => submit(e.target.form)}
             />
-            <div id="search-spinner" aria-hidden hidden={!searching}></div>
+            {/* <div id="search-spinner" aria-hidden hidden={!searching}></div> */}
+            <span
+                className={`search-spinner ${searching ? "show" : ""}`}
+                aria-hidden
+            >
+                <TfiReload />
+            </span>
+            <span
+                className={`search-icon ${!searching ? "show" : ""}`}
+                aria-hidden
+            >
+                <IoSearchOutline />
+            </span>
         </Form>
     );
 }

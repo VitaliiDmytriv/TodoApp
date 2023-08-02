@@ -10,6 +10,10 @@
     color: $light-base;
     font-size: var(--FZ-baseFont);
     cursor: pointer;
+
+    &:hover {
+        background-color: rgb(109 40 217);
+    }
 }
 
 // ========
@@ -39,7 +43,7 @@
 
 .notification {
     color: $light-basePurple;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     cursor: pointer;
     position: relative;
     display: flex;
@@ -60,6 +64,9 @@
     padding: 2px;
     border-radius: 2px;
     transition: all 0.2s;
+    border: 0;
+    background-color: transparent;
+    color: $light-baseSecondFont;
 
     &:hover {
         background-color: $light-basePurple;
@@ -82,7 +89,7 @@
         padding: 2px 3px;
         border-radius: 2px;
         font-size: 0.8rem;
-        bottom: -130%;
+        bottom: -100%;
         left: -20%;
         transition-delay: 0s;
     }
@@ -109,7 +116,6 @@
     transition: all 0.3s;
     font-size: var(--FZ-baseFont);
     color: $light-baseFont;
-
     &:hover {
         border: 2px solid $light-basePurple;
     }
@@ -130,14 +136,28 @@
     }
 }
 
-#search-spinner {
-    width: 1rem;
-    height: 1rem;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23000' strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M20 4v5h-.582m0 0a8.001 8.001 0 00-15.356 2m15.356-2H15M4 20v-5h.581m0 0a8.003 8.003 0 0015.357-2M4.581 15H9' /%3E%3C/svg%3E");
-    animation: spin 1s infinite linear;
+.search-spinner,
+.search-icon {
     position: absolute;
     right: 0.625rem;
     top: 0.75rem;
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+    color: $light-baseSecondFont;
+}
+
+.search-icon {
+    font-size: 1.1rem;
+}
+
+.search-spinner {
+    animation: spin 1s infinite linear;
+}
+
+.search-spinner.show,
+.search-icon.show {
+    visibility: visible;
 }
 
 @keyframes spin {
@@ -146,5 +166,22 @@
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+//==================
+.btnIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+
+    @media (min-width: $breakPonint1280px) {
+        display: none;
+    }
+    img {
+        max-width: 100%;
     }
 }

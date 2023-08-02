@@ -1,12 +1,12 @@
 import { RiMenu2Fill } from "react-icons/ri";
 
 // eslint-disable-next-line react/prop-types
-function MenuHamburger({ className }) {
+function MenuHamburger({ ...props }) {
     return (
         // eslint-disable-next-line react/no-unknown-property
-        <span className={`menuHamburger ${className}`}>
+        <button className={`menuHamburger`} {...props}>
             <RiMenu2Fill />
-        </span>
+        </button>
     );
 }
 

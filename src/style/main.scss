@@ -59,6 +59,7 @@
         height: 100%;
         &.active {
             position: absolute;
+            z-index: 100;
             left: 0;
             right: 0;
             top: 0;
@@ -75,6 +76,7 @@
         top: 0;
         bottom: 0;
         background-color: $light-base;
+        z-index: 100;
         @media (min-width: $breakPonint1280px) {
             position: static;
             height: 100%;

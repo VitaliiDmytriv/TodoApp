@@ -4,12 +4,13 @@
     &__grid {
         display: grid;
         row-gap: 1rem;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr 0.5fr 1fr;
         grid-template-rows: auto auto;
         place-items: center;
 
         @media (min-width: $breakPonint768px) {
             grid-row: 1fr;
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 
@@ -27,9 +28,17 @@
 
     &__action {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: flex-end;
+        gap: 0.7rem;
         align-items: center;
         width: 100%;
+
+        @media (min-width: $breakPonint640px) {
+            justify-content: center;
+        }
+        @media (min-width: $breakPonint768px) {
+            gap: 1rem;
+        }
 
         & .myButton {
             display: none;

@@ -35,7 +35,10 @@ function Root() {
                     side={LEFT}
                 ></SideBar>
                 <section className="content">
-                    <Header query={query} />
+                    <Header
+                        query={query}
+                        handleSidebarClick={handleSidebarClick}
+                    />
                     <Outlet />
                 </section>
                 <SideBar
