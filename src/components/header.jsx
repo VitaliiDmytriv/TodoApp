@@ -12,7 +12,7 @@ function Header({ query, handleSidebarClick }) {
         <header className="header">
             <div className="header__grid">
                 <div className="header__hamburger">
-                    <Tooltip datahover="show sidebar">
+                    <Tooltip tooltipText="show sidebar">
                         <MenuHamburger
                             onClick={() => handleSidebarClick(LEFT, true)}
                         />
@@ -22,7 +22,7 @@ function Header({ query, handleSidebarClick }) {
                     <DateNow />
                 </div>
                 <div className="header__action">
-                    <Tooltip datahover="see notifications">
+                    <Tooltip tooltipText="see notifications">
                         <Notification />
                     </Tooltip>
                     <MyButton>Add new task</MyButton>

@@ -1,8 +1,8 @@
 // eslint-disable-next-line react/prop-types
-function Tooltip({ children, datahover }) {
+function Tooltip({ children, tooltipText }) {
     return (
         // eslint-disable-next-line react/no-unknown-property
-        <span datahover={datahover} className="tooltip">
+        <span tooltipText={tooltipText} className="tooltip">
             {children}
         </span>
     );
