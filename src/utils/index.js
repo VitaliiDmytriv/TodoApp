@@ -16,3 +16,12 @@ export function getDateNow() {
 
     return { year, month, day };
 }
+
+function makeFirstLetterUp(word) {
+    return word[0].toUpperCase() + word.slice(1);
+}
+
+export function getTitlePage(path) {
+    const splitedPath = path.split("/")[1];
+    return makeFirstLetterUp(splitedPath);
+}

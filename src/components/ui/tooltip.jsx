@@ -2,7 +2,7 @@
 function Tooltip({ children, tooltipText }) {
     return (
         // eslint-disable-next-line react/no-unknown-property
-        <span tooltipText={tooltipText} className="tooltip">
+        <span data-tooltip={tooltipText} className="tooltip">
             {children}
         </span>
     );

@@ -111,7 +111,10 @@
 
 .content {
     background-color: $light-baseDarker;
-    padding: 1.25rem 2rem 4rem;
+    padding: 1.25rem 0.75rem 4rem;
+    @media (min-width: $breakPonint768px) {
+        padding: 1.25rem 2rem 4rem;
+    }
 }
 
 // ====================

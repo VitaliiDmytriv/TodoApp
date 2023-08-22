@@ -4,7 +4,7 @@
     &__grid {
         display: grid;
         row-gap: 1rem;
-        grid-template-columns: 1fr 0.5fr 1fr;
+        grid-template-columns: 1fr max-content 1fr;
         grid-template-rows: auto auto;
         place-items: center;
 
@@ -33,9 +33,6 @@
         align-items: center;
         width: 100%;
 
-        @media (min-width: $breakPonint640px) {
-            justify-content: center;
-        }
         @media (min-width: $breakPonint768px) {
             gap: 1rem;
         }
