@@ -44,7 +44,9 @@ function Root() {
                     />
                     <Title>{title} tasks (count of tasks)</Title>
                     <Filter isGrid={isGrid} setIsGrid={setIsGrid} />
-                    <Outlet />
+                    <section className={`outlet__view ${isGrid ? "grid" : ""}`}>
+                        <Outlet />
+                    </section>
                 </section>
                 <SideBar
                     sideBars={sideBars}

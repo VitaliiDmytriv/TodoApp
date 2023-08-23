@@ -1,7 +1,8 @@
-function Task() {
+// eslint-disable-next-line react/prop-types
+function Task({ children }) {
     return (
-        <article>
-            <div></div>
+        <article className="task bxsh">
+            <div>{children}</div>
         </article>
     );
 }

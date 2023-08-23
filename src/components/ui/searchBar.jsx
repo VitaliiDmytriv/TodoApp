@@ -16,7 +16,7 @@ function Searchbar({ ...props }) {
                 {...props}
                 placeholder="Search task"
                 id="q"
-                className="searchbar input"
+                className="searchbar input bxsh"
                 type="search"
                 name="q"
                 aria-label="search tasks"

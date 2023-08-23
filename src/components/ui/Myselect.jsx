@@ -9,7 +9,7 @@ const options = [
 
 function MySelect() {
     return (
-        <select className="input" name="" id="" defaultValue={"Sort by"}>
+        <select className="input bxsh" name="" id="" defaultValue={"Sort by"}>
             {options.map((option, id) => {
                 return (
                     <option key={id} value={option} disabled={id === 0}>
