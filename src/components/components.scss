@@ -1,6 +1,19 @@
 @import "../style/variables/breakPoints.scss";
+@import "../style/variables/colors.scss";
 
 .header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    padding-inline: 0.75rem;
+    top: 0;
+    background-color: $light-baseDarker;
+    z-index: 99;
+    padding-top: 1.25rem;
+
+    @media (min-width: $breakPonint768px) {
+        padding-inline: 2rem;
+    }
     &__grid {
         display: grid;
         row-gap: 1rem;
