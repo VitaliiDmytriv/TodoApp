@@ -37,12 +37,6 @@ function App() {
 
     return (
         <main className={`${isDarkMode} h-full bg-slate-700`}>
-            <button
-                onClick={handleChangeTheme}
-                className="bg-lightPurple dark:bg-darkPurple m-4 px-3 text-white"
-            >
-                {isDark ? "Light" : "Dark"}
-            </button>
             {isActive && (
                 <div
                     onClick={CloseSideBar}
@@ -54,9 +48,19 @@ function App() {
                     onClick={(e) => e.stopPropagation()}
                     className={` ${
                         isLeftBar && "translate-x-0"
-                    } h-full bg-lightSecond dark:bg-darkSecond w-200px absolute transition-all -translate-x-full z-50 desktop:translate-x-0 desktop:static desktop:w-auto`}
-                ></aside>
-                <section className="px-8 pt-5 pb-16">
+                    } h-full bg-lightSecond dark:bg-darkSecond w-200px fixed transition-all left-0 top-0 -translate-x-full z-50 desktop:translate-x-0  desktop:w-13%`}
+                >
+                    another bla bla
+                </aside>
+                <section className="px-8 pt-5 pb-16 col-start-2 ">
+                    <div className="mb-3 p-3 bg-slate-500">
+                        <button
+                            onClick={handleChangeTheme}
+                            className="bg-lightPurple dark:bg-darkPurple  text-white"
+                        >
+                            {isDark ? "Light" : "Dark"}
+                        </button>
+                    </div>
                     <div className="flex justify-between">
                         <button
                             onClick={() => ShowSideBar("left")}
@@ -264,7 +268,7 @@ function App() {
                 <aside
                     className={` ${
                         isRigthBar && "-translate-x-0"
-                    } h-full bg-lightSecond dark:bg-darkSecond w-200px absolute translate-x-full right-0 top-0 transition-all z-50 desktop:translate-x-0 desktop:static desktop:w-auto`}
+                    } h-full bg-lightSecond dark:bg-darkSecond w-200px fixed translate-x-full right-0 top-0 transition-all z-50 desktop:translate-x-0 desktop:w-13%`}
                 >
                     <div>bla</div>
                 </aside>

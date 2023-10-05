@@ -23,7 +23,6 @@ export default {
 
         screens: {
             desktop: "80rem",
-            // upToDesktop: { max: "80rem" },
         },
     },
     plugins: [],
