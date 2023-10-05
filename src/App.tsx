@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { SideBarsState, SideBar } from "./type";
+import { SideBarsState, SideBarType } from "./type";
+import SideBar from "./components/SideBar";
 
 const defaultBarsState = {
     isActive: false,
@@ -20,7 +21,7 @@ function App() {
     }
 
     // Opens side bar based on what side was clicked and changes state
-    function ShowSideBar(side: SideBar) {
+    function ShowSideBar(side: SideBarType) {
         if (side === "left") {
             setSideBars((prev) => ({ ...prev, isLeftBar: true, isActive: true }));
         } else {
@@ -44,14 +45,9 @@ function App() {
                 ></div>
             )}
             <section className="min-h-screen h-full bg-lightBase dark:bg-darkBase desktop:grid grid-cols-3-custom relative overflow-x-hidden">
-                <aside
-                    onClick={(e) => e.stopPropagation()}
-                    className={` ${
-                        isLeftBar && "translate-x-0"
-                    } h-full bg-lightSecond dark:bg-darkSecond w-200px fixed transition-all left-0 top-0 -translate-x-full z-50 desktop:translate-x-0  desktop:w-13%`}
-                >
-                    another bla bla
-                </aside>
+                <SideBar side="left" isSideActive={isLeftBar}>
+                    chinazes
+                </SideBar>
                 <section className="px-8 pt-5 pb-16 col-start-2 ">
                     <div className="mb-3 p-3 bg-slate-500">
                         <button
@@ -265,13 +261,9 @@ function App() {
                         exercitationem commodi.
                     </div>
                 </section>
-                <aside
-                    className={` ${
-                        isRigthBar && "-translate-x-0"
-                    } h-full bg-lightSecond dark:bg-darkSecond w-200px fixed translate-x-full right-0 top-0 transition-all z-50 desktop:translate-x-0 desktop:w-13%`}
-                >
-                    <div>bla</div>
-                </aside>
+                <SideBar side="right" isSideActive={isRigthBar}>
+                    Chinazes but from the rigth corner
+                </SideBar>
             </section>
         </main>
     );

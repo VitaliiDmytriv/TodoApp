@@ -4,4 +4,4 @@ export type SideBarsState = {
     isRigthBar: boolean;
 };
 
-export type SideBar = "right" | "left";
+export type SideBarType = "right" | "left";

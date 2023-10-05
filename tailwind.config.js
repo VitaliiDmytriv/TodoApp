@@ -5,7 +5,7 @@ export default {
     theme: {
         extend: {
             width: {
-                "200px": "12.5rem",
+                "200px": "15rem",
                 "13%": "13.515625%",
             },
             colors: {
