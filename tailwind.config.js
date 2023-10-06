@@ -22,6 +22,7 @@ export default {
         },
 
         screens: {
+            tablet: "48rem",
             desktop: "80rem",
         },
     },

@@ -5,3 +5,8 @@ export type SideBarsState = {
 };
 
 export type SideBarType = "right" | "left";
+
+export type Task = {
+    id: number;
+    title: string;
+};
