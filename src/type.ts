@@ -10,3 +10,7 @@ export type Task = {
     id: number;
     title: string;
 };
+
+export type Data = {
+    tasks: Task[];
+};

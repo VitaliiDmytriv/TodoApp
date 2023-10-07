@@ -1,10 +1,8 @@
-import { useState, useEffect, FormEvent } from "react";
+import { useState, useEffect, FormEvent, Suspense } from "react";
 import { SideBarsState, SideBarType } from "./type";
 import SideBar from "./components/SideBar";
-import { useSearchParams } from "react-router-dom";
-import { useQuery } from "react-query";
-import { getTasks } from "./utils/getTasks";
-import { filterTasks } from "./utils/filterTasks";
+import { useSearchParams, useLoaderData, Await, useSubmit } from "react-router-dom";
+import { assertIsData, assertIsTasks } from "./utils/getTasks";
 
 const defaultBarsState = {
     isActive: false,
@@ -17,21 +15,16 @@ function App() {
     const [isDark, setIsDark] = useState<boolean>(
         JSON.parse(localStorage.getItem("theme") ?? "false")
     );
+    const isDarkMode = isDark ? "dark" : "";
     // SideBars
     const [{ isActive, isLeftBar, isRigthBar }, setSideBars] =
         useState<SideBarsState>(defaultBarsState);
     // SearchParams
     const [searchParams, setSearchParams] = useSearchParams();
-    const searchQ = searchParams.get("q") ?? "";
-    // ReactQuery
-    const { isLoading, data: tasks } = useQuery({
-        queryKey: ["search", searchQ],
-        queryFn: () => getTasks(searchQ),
-    });
-
-    console.log(searchQ);
-
-    const isDarkMode = isDark ? "dark" : "";
+    const submit = useSubmit();
+    // Tasks data
+    const data = useLoaderData();
+    assertIsData(data);
 
     // Update localeStorage theme mode when "isDark" changes
     useEffect(() => {
@@ -58,7 +51,7 @@ function App() {
     }
 
     // Handle search submit and update "setSearchParams" for upload new data from the server
-    function handleSearchSubmit(e: FormEvent<HTMLFormElement>) {
+    function handleSearchChange(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const q = formData.get("q") as string;
@@ -100,24 +93,26 @@ function App() {
                             rIGTH
                         </button>
                     </div>
-                    <form method="get" onSubmit={handleSearchSubmit}>
+                    <form onSubmit={handleSearchChange}>
                         <input
+                            aria-label="Search tasks"
                             defaultValue={searchParams.get("q") ?? ""}
                             className="outline-none p-1"
                             name="q"
                             type="search"
+                            onChange={(e) => submit(e.currentTarget.form)}
                         />
                     </form>
-                    <div>
-                        {isLoading ? (
-                            <div>Loading ...</div>
-                        ) : (
-                            tasks &&
-                            filterTasks(tasks, searchQ).map((task) => {
-                                return <div key={task.id}>{task.title}</div>;
-                            })
-                        )}
-                    </div>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Await resolve={data.tasks}>
+                            {(tasks) => {
+                                assertIsTasks(tasks);
+                                return tasks.map((task) => (
+                                    <div key={task.id}>{task.title}</div>
+                                ));
+                            }}
+                        </Await>
+                    </Suspense>
                 </section>
                 <SideBar side="right" isSideActive={isRigthBar}>
                     Chinazes but from the rigth corner

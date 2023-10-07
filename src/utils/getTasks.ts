@@ -1,4 +1,4 @@
-import { Task } from "../type";
+import { Task, Data } from "../type";
 
 export async function getTasks(q: string) {
     const response = await fetch(`http://localhost:3001/tasks?title_like=${q}`);
@@ -7,7 +7,7 @@ export async function getTasks(q: string) {
     return body;
 }
 
-function assertIsTasks(data: unknown): asserts data is Task[] {
+export function assertIsTasks(data: unknown): asserts data is Task[] {
     if (!Array.isArray(data)) {
         throw new Error("posts isn't array");
     }
@@ -29,4 +29,16 @@ function assertIsTasks(data: unknown): asserts data is Task[] {
             throw new Error("title is not a string");
         }
     });
+}
+
+export function assertIsData(data: unknown): asserts data is Data {
+    if (typeof data !== "object") {
+        throw new Error("Data isn't an object");
+    }
+    if (data === null) {
+        throw new Error("Data is null");
+    }
+    if (!("tasks" in data)) {
+        throw new Error("data doesn't contain tasks");
+    }
 }
