@@ -9,7 +9,7 @@ type Props = {
 
 function SideBar({ children, isSideActive, side }: Props) {
     const leftCss = { dynamic: "translate-x-0", static: `left-0 -translate-x-full` };
-    const rightCss = { dynamic: "translate-x-1", static: `right-0 translate-x-full` };
+    const rightCss = { dynamic: "translate-x-2", static: `right-0 translate-x-full` };
 
     const cssClasse = side === "left" ? leftCss : rightCss;
 

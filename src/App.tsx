@@ -1,15 +1,9 @@
 import { useState, useEffect, Suspense } from "react";
-import { SideBarsState, SideBarType } from "./type";
 import SideBar from "./components/SideBar";
 import { useLoaderData, Await } from "react-router-dom";
 import { assertIsData, assertIsTasks } from "./utils/getTasks";
 import MyHeader from "./components/MyHeader";
-
-const defaultBarsState = {
-    isActive: false,
-    isLeftBar: false,
-    isRigthBar: false,
-};
+import { useSideBarsContext } from "./hooks/useSideBarsContext";
 
 function App() {
     // Theme
@@ -18,9 +12,7 @@ function App() {
     );
     const isDarkMode = isDark ? "dark" : "";
     // SideBars
-    const [{ isActive, isLeftBar, isRigthBar }, setSideBars] =
-        useState<SideBarsState>(defaultBarsState);
-
+    const { dispatch, isActive, isLeftBar, isRigthBar } = useSideBarsContext();
     // Tasks data
     const data = useLoaderData();
     assertIsData(data);
@@ -35,25 +27,11 @@ function App() {
         setIsDark((prev) => !prev);
     }
 
-    // Opens side bar based on what side was clicked and changes state
-    function ShowSideBar(side: SideBarType) {
-        if (side === "left") {
-            setSideBars((prev) => ({ ...prev, isLeftBar: true, isActive: true }));
-        } else {
-            setSideBars((prev) => ({ ...prev, isRigthBar: true, isActive: true }));
-        }
-    }
-
-    // Closes any side bar and change state
-    function CloseSideBar() {
-        setSideBars({ isLeftBar: false, isRigthBar: false, isActive: false });
-    }
-
     return (
         <main className={`${isDarkMode} h-full bg-slate-700`}>
             {isActive && (
                 <div
-                    onClick={CloseSideBar}
+                    onClick={() => dispatch({ type: "close" })}
                     className="absolute left-0 right-0 bottom-0 top-0 bg-black opacity-20 z-20 desktop:hidden"
                 ></div>
             )}
@@ -70,20 +48,6 @@ function App() {
                             className="bg-lightPurple dark:bg-darkPurple  text-white"
                         >
                             {isDark ? "Light" : "Dark"}
-                        </button>
-                    </div>
-                    <div className="flex justify-between">
-                        <button
-                            onClick={() => ShowSideBar("left")}
-                            className="bg-lightPurple text-white px-2"
-                        >
-                            Left
-                        </button>
-                        <button
-                            onClick={() => ShowSideBar("right")}
-                            className="bg-lightPurple text-white px-2"
-                        >
-                            rIGTH
                         </button>
                     </div>
                     <Suspense fallback={<div>Loading...</div>}>
