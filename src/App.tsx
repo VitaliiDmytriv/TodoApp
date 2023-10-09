@@ -1,8 +1,9 @@
-import { useState, useEffect, FormEvent, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { SideBarsState, SideBarType } from "./type";
 import SideBar from "./components/SideBar";
-import { useSearchParams, useLoaderData, Await, useSubmit } from "react-router-dom";
+import { useLoaderData, Await } from "react-router-dom";
 import { assertIsData, assertIsTasks } from "./utils/getTasks";
+import MyHeader from "./components/MyHeader";
 
 const defaultBarsState = {
     isActive: false,
@@ -19,9 +20,7 @@ function App() {
     // SideBars
     const [{ isActive, isLeftBar, isRigthBar }, setSideBars] =
         useState<SideBarsState>(defaultBarsState);
-    // SearchParams
-    const [searchParams, setSearchParams] = useSearchParams();
-    const submit = useSubmit();
+
     // Tasks data
     const data = useLoaderData();
     assertIsData(data);
@@ -50,14 +49,6 @@ function App() {
         setSideBars({ isLeftBar: false, isRigthBar: false, isActive: false });
     }
 
-    // Handle search submit and update "setSearchParams" for upload new data from the server
-    function handleSearchChange(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const q = formData.get("q") as string;
-        setSearchParams({ q });
-    }
-
     return (
         <main className={`${isDarkMode} h-full bg-slate-700`}>
             {isActive && (
@@ -70,7 +61,9 @@ function App() {
                 <SideBar side="left" isSideActive={isLeftBar}>
                     chinazes
                 </SideBar>
+
                 <section className="px-3 pt-5 pb-8 col-start-2 tablet:px-8 tablet:pb-16">
+                    <MyHeader />
                     <div className="mb-3 p-3 bg-slate-500">
                         <button
                             onClick={handleChangeTheme}
@@ -93,16 +86,6 @@ function App() {
                             rIGTH
                         </button>
                     </div>
-                    <form onSubmit={handleSearchChange}>
-                        <input
-                            aria-label="Search tasks"
-                            defaultValue={searchParams.get("q") ?? ""}
-                            className="outline-none p-1"
-                            name="q"
-                            type="search"
-                            onChange={(e) => submit(e.currentTarget.form)}
-                        />
-                    </form>
                     <Suspense fallback={<div>Loading...</div>}>
                         <Await resolve={data.tasks}>
                             {(tasks) => {
