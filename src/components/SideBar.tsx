@@ -17,7 +17,7 @@ function SideBar({ children, isSideActive, side }: Props) {
         <aside
             className={`${isSideActive && cssClasse.dynamic} ${
                 cssClasse.static
-            } h-full bg-lightSecond dark:bg-darkSecond p-5 w-200px fixed transition-all top-0 z-50 desktop:translate-x-0 desktop:w-13%`}
+            } h-full bg-lightSecond dark:bg-darkSecond p-5 w-200px fixed transition-all top-0 z-10 desktop:translate-x-0 desktop:w-13%`}
         >
             {children}
         </aside>

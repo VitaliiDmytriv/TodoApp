@@ -8,6 +8,7 @@ import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { getTasks } from "./utils/getTasks";
 import SideBarsProvider from "./context/SideBarsContext";
+import ModalFormProvider from "./context/ModalFormContext";
 
 const queryClient = new QueryClient();
 
@@ -35,9 +36,11 @@ const router = createBrowserRouter([
 export default function Routes() {
     return (
         <QueryClientProvider client={queryClient}>
-            <SideBarsProvider>
-                <RouterProvider router={router} />
-            </SideBarsProvider>
+            <ModalFormProvider>
+                <SideBarsProvider>
+                    <RouterProvider router={router} />
+                </SideBarsProvider>
+            </ModalFormProvider>
         </QueryClientProvider>
     );
 }

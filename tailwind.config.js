@@ -18,6 +18,8 @@ export default {
                 darkSecond: "rgb(20, 30, 51)",
                 darkPurple: "rgb(124, 58, 237)",
                 darkTxtBase: "rgb(148, 163, 184)",
+
+                shadow: "rgba(0, 0, 0, 0.200)",
             },
             gridTemplateColumns: {
                 "3-custom": "13.515625% 1fr 13.515625%",

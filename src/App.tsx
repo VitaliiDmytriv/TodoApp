@@ -4,6 +4,8 @@ import { useLoaderData, Await } from "react-router-dom";
 import { assertIsData, assertIsTasks } from "./utils/getTasks";
 import MyHeader from "./components/MyHeader";
 import { useSideBarsContext } from "./hooks/useSideBarsContext";
+import Shade from "./components/ui/Shade";
+// import { useModalFormContext } from "./hooks/useModalFormContext";
 
 function App() {
     // Theme
@@ -30,11 +32,9 @@ function App() {
     return (
         <main className={`${isDarkMode} h-full bg-slate-700`}>
             {isActive && (
-                <div
-                    onClick={() => dispatch({ type: "close" })}
-                    className="absolute left-0 right-0 bottom-0 top-0 bg-black opacity-20 z-20 desktop:hidden"
-                ></div>
+                <Shade onClick={() => dispatch({ type: "close" })} isHidden={true} />
             )}
+
             <section className="min-h-screen h-full bg-lightBase dark:bg-darkBase desktop:grid grid-cols-3-custom relative overflow-x-hidden">
                 <SideBar side="left" isSideActive={isLeftBar}>
                     chinazes
